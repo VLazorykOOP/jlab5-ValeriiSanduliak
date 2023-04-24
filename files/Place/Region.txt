@@ -1,0 +1,5 @@
+New England,UnitedStates,14400000
+Andalusia,Spain,8414240
+Bavaria,Germany,13076721
+Queensland,Australia,5115237
+Kansai,Japan,22468305
