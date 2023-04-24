@@ -1,6 +1,6 @@
 package Body;
 
-public class Ball extends Body {
+public class Ball extends Body implements Comparable<Body>{
     private double radius;
     public Ball(double radius){
         this.radius = radius;

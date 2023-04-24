@@ -1,6 +1,6 @@
 package Place;
 
-public class Place implements Comparable<Place> {
+public abstract class Place implements Comparable<Place> {
     private String name;
     private int population;
 

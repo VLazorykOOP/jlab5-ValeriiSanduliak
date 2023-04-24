@@ -1,15 +1,74 @@
-import Place.*;
-import Body.*;
-import BodyT.*;
+import Place.City;
+import Place.Megapolis;
+import Place.Place;
+import Place.Region;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
+import java.util.Comparator;
+import java.util.Scanner;
 
 public class Task1 {
+    public static void task1(){
+        ArrayList<Region> regions = readRegionFromFile();
+        ArrayList<City> cities = readCityFromFile();
+        ArrayList<Megapolis> megapolis = readMegapolisFromFile();
+        for (Region r : regions) {
+            System.out.println(r + "\n------------------");
+        }
+        for (City c : cities) {
+            System.out.println(c + "\n------------------");
+        }
+        for (Megapolis m : megapolis) {
+            System.out.println(m + "\n------------------");
+        }
+        Collections.sort(regions);
+        Collections.sort(cities);
+        Collections.sort(megapolis);
+        System.out.println("\nPlaces after sort by name : \n");
+        for (Region r : regions) {
+            System.out.println(r + "\n------------------");
+        }
+        for (City c : cities) {
+            System.out.println(c + "\n------------------");
+        }
+        for (Megapolis m : megapolis) {
+            System.out.println(m + "\n------------------");
+        }
+        addPlaces(regions, cities, megapolis);
+        Collections.sort(regions);
+        Collections.sort(cities);
+        Collections.sort(megapolis);
+        System.out.println("\nPlaces after add new place and sort by name : \n");
+        for (Region r : regions) {
+            System.out.println(r + "\n------------------");
+        }
+        for (City c : cities) {
+            System.out.println(c + "\n------------------");
+        }
+        for (Megapolis m : megapolis) {
+            System.out.println(m + "\n------------------");
+        }
+        ArrayList<Place> places = new ArrayList<>();
+        places.addAll(cities);
+        places.addAll(regions);
+        places.addAll(megapolis);
+        Collections.sort(places);
+        for (Place p : places) {
+            System.out.println(p + "\n------------------");
+        }
+        Comparator<Place> comparator = Comparator.comparing(Place::getName);
+        Collections.sort(places,comparator);
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter("D:\\Education\\2-course\\Java\\jlab5-ValeriiSanduliak\\files\\Place\\output.txt"))) {
+            for (Place place : places) {
+                bw.write(place + "\n------------------");
+                bw.newLine();
+            }
+        } catch (IOException e) {
+            System.out.println("Error message: " + e.getMessage());
+        }
+    }
     static ArrayList<Region> readRegionFromFile() {
         ArrayList<Region> regions = new ArrayList<>();
         try (BufferedReader br = new BufferedReader(new FileReader("D:\\Education\\2-course\\Java\\jlab5-ValeriiSanduliak\\files\\Place\\Region.txt"))) {
@@ -65,32 +124,60 @@ public class Task1 {
         return megapolis;
     }
 
-    public static void task1() {
-        ArrayList<Region> regions = readRegionFromFile();
-        ArrayList<City> cities = readCityFromFile();
-        ArrayList<Megapolis> megapolis = readMegapolisFromFile();
-        for (Region r : regions) {
-            System.out.println(r + "\n------------------");
+    static void addPlaces(ArrayList<Region> regions, ArrayList<City> cities, ArrayList<Megapolis> megapolises) {
+        Scanner scanner = new Scanner(System.in);
+        int ch = 1;
+        while (ch != 4) {
+            System.out.println("Choose a class to add a record:");
+            System.out.println("1. Region");
+            System.out.println("2. City");
+            System.out.println("3. Megapolis");
+            System.out.println("4. Exit");
+            System.out.print("Select option <<< ");
+            ch = scanner.nextInt();
+            scanner.nextLine();
+            switch (ch) {
+                case 1:
+                    System.out.print("Enter region name: ");
+                    String regionName = scanner.nextLine();
+                    System.out.print("Enter region population: ");
+                    int regionPopulation = scanner.nextInt();
+                    scanner.nextLine();
+                    System.out.print("Enter region country: ");
+                    String regionCountry = scanner.nextLine();
+                    Region region = new Region(regionName, regionCountry, regionPopulation);
+                    regions.add(region);
+                    break;
+                case 2:
+                    System.out.print("Enter city name: ");
+                    String cityName = scanner.nextLine();
+                    System.out.print("Enter city population: ");
+                    int cityPopulation = scanner.nextInt();
+                    System.out.print("Enter street count: ");
+                    int streetCount = scanner.nextInt();
+                    City city = new City(cityName, cityPopulation, streetCount);
+                    cities.add(city);
+                    break;
+                case 3:
+                    System.out.print("Enter megapolis name: ");
+                    String megapolisName = scanner.nextLine();
+                    System.out.print("Enter megapolis population: ");
+                    int megapolisPopulation = scanner.nextInt();
+                    System.out.print("Enter airport count: ");
+                    int airportCount = scanner.nextInt();
+                    System.out.print("Enter park count: ");
+                    int parkCount = scanner.nextInt();
+                    Megapolis megapolis = new Megapolis(megapolisName, megapolisPopulation, airportCount, parkCount);
+                    megapolises.add(megapolis);
+                    break;
+                case 4:
+                    System.out.println("Exiting...");
+                    break;
+                default:
+                    System.out.println("Invalid option selected. Please try again.");
+            }
         }
-        for (City c : cities) {
-            System.out.println(c + "\n------------------");
-        }
-        for (Megapolis m : megapolis) {
-            System.out.println(m + "\n------------------");
-        }
-        Collections.sort(regions);
-        Collections.sort(cities);
-        Collections.sort(megapolis);
-        System.out.println("\nPlaces after sort by name : \n");
-        for (Region r : regions) {
-            System.out.println(r + "\n------------------");
-        }
-        for (City c : cities) {
-            System.out.println(c + "\n------------------");
-        }
-        for (Megapolis m : megapolis) {
-            System.out.println(m + "\n------------------");
-        }
-
     }
+
+
 }

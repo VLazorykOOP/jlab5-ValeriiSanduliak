@@ -1,6 +1,6 @@
 package Body;
 
-public class Parallelepiped extends Body{
+public class Parallelepiped extends Body implements Comparable<Body>{
  private double length;
  private double width;
  private double height;
