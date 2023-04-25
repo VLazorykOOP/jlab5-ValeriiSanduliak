@@ -4,16 +4,13 @@ import Place.Place;
 import Place.Region;
 
 import java.io.*;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.Scanner;
+import java.util.*;
 
 public class Task1 {
-    public static void task1(){
-        ArrayList<Region> regions = readRegionFromFile();
-        ArrayList<City> cities = readCityFromFile();
-        ArrayList<Megapolis> megapolis = readMegapolisFromFile();
+    public static void task1() {
+        List<Region> regions = readRegionFromFile();
+        List<City> cities = readCityFromFile();
+        List<Megapolis> megapolis = readMegapolisFromFile();
         for (Region r : regions) {
             System.out.println(r + "\n------------------");
         }
@@ -50,7 +47,7 @@ public class Task1 {
         for (Megapolis m : megapolis) {
             System.out.println(m + "\n------------------");
         }
-        ArrayList<Place> places = new ArrayList<>();
+        List<Place> places = new ArrayList<>();
         places.addAll(cities);
         places.addAll(regions);
         places.addAll(megapolis);
@@ -59,7 +56,7 @@ public class Task1 {
             System.out.println(p + "\n------------------");
         }
         Comparator<Place> comparator = Comparator.comparing(Place::getName);
-        Collections.sort(places,comparator);
+        Collections.sort(places, comparator);
         try (BufferedWriter bw = new BufferedWriter(new FileWriter("D:\\Education\\2-course\\Java\\jlab5-ValeriiSanduliak\\files\\Place\\output.txt"))) {
             for (Place place : places) {
                 bw.write(place + "\n------------------");
@@ -69,8 +66,9 @@ public class Task1 {
             System.out.println("Error message: " + e.getMessage());
         }
     }
-    static ArrayList<Region> readRegionFromFile() {
-        ArrayList<Region> regions = new ArrayList<>();
+
+    static List<Region> readRegionFromFile() {
+        List<Region> regions = new ArrayList<>();
         try (BufferedReader br = new BufferedReader(new FileReader("D:\\Education\\2-course\\Java\\jlab5-ValeriiSanduliak\\files\\Place\\Region.txt"))) {
             String line;
             while ((line = br.readLine()) != null) {
@@ -87,8 +85,8 @@ public class Task1 {
         return regions;
     }
 
-    static ArrayList<City> readCityFromFile() {
-        ArrayList<City> cities = new ArrayList<>();
+    static List<City> readCityFromFile() {
+        List<City> cities = new ArrayList<>();
         try (BufferedReader br = new BufferedReader(new FileReader("D:\\Education\\2-course\\Java\\jlab5-ValeriiSanduliak\\files\\Place\\City.txt"))) {
             String line;
             while ((line = br.readLine()) != null) {
@@ -105,8 +103,8 @@ public class Task1 {
         return cities;
     }
 
-    static ArrayList<Megapolis> readMegapolisFromFile() {
-        ArrayList<Megapolis> megapolis = new ArrayList<>();
+    static List<Megapolis> readMegapolisFromFile() {
+        List<Megapolis> megapolis = new ArrayList<>();
         try (BufferedReader br = new BufferedReader(new FileReader("D:\\Education\\2-course\\Java\\jlab5-ValeriiSanduliak\\files\\Place\\Megapolis.txt"))) {
             String line;
             while ((line = br.readLine()) != null) {
@@ -124,7 +122,7 @@ public class Task1 {
         return megapolis;
     }
 
-    static void addPlaces(ArrayList<Region> regions, ArrayList<City> cities, ArrayList<Megapolis> megapolises) {
+    static void addPlaces(List<Region> regions, List<City> cities, List<Megapolis> megapolises) {
         Scanner scanner = new Scanner(System.in);
         int ch = 1;
         while (ch != 4) {

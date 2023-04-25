@@ -1,0 +1,74 @@
+Region info:
+Name: Andalusia
+Population: 8414240
+Country: Spain
+------------------
+Region info:
+Name: Bavaria
+Population: 13076721
+Country: Germany
+------------------
+Megapolis info
+Name: Beijing
+Population: 21516000
+Airport Count: 5
+Park Count: 8
+------------------
+Region info:
+Name: Kansai
+Population: 22468305
+Country: Japan
+------------------
+City info:
+Name: Kyiv
+Population: 125132441
+Street Count: 20
+------------------
+City info:
+Name: London
+Population: 89999992
+Street Count: 60
+------------------
+Megapolis info
+Name: London
+Population: 9126366
+Airport Count: 4
+Park Count: 12
+------------------
+Region info:
+Name: New England
+Population: 14400000
+Country: UnitedStates
+------------------
+Megapolis info
+Name: New York
+Population: 8336817
+Airport Count: 3
+Park Count: 15
+------------------
+City info:
+Name: Praha
+Population: 4362526
+Street Count: 15
+------------------
+Region info:
+Name: Queensland
+Population: 5115237
+Country: Australia
+------------------
+City info:
+Name: Tokyo
+Population: 23599992
+Street Count: 10
+------------------
+Megapolis info
+Name: Tokyo
+Population: 13515271
+Airport Count: 2
+Park Count: 10
+------------------
+City info:
+Name: Warsaw
+Population: 754325437
+Street Count: 25
+------------------
